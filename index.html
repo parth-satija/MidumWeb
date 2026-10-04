@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Midum — Product &amp; Capability Overview</title>
+<meta name="description" content="Midum is a desktop AI agent that sees, operates and builds on a user's computer through natural language and voice.">
+<meta name="color-scheme" content="light">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,700&family=Instrument+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#f7f8fb;--surface:#fff;--ink:#14182b;--muted:#5b6178;--line:#e2e5ee;--accent:#3d4df0;--accent-soft:#eceefe;--code:#f0f2f8;
+--head:"Bricolage Grotesque","Segoe UI",system-ui,sans-serif;--body:"Instrument Sans","Segoe UI",system-ui,sans-serif;--mono:"JetBrains Mono",ui-monospace,Consolas,monospace}
+*{box-sizing:border-box}html{scroll-behavior:smooth;scroll-padding-top:76px}
+body{margin:0;background:var(--bg);color:var(--ink);font:17px/1.65 var(--body)}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+a{color:var(--accent)}a:focus-visible,button:focus-visible{outline:3px solid var(--accent);outline-offset:2px}
+.wrap{max-width:1040px;margin:0 auto;padding:0 24px}
+header.nav{position:sticky;top:0;z-index:5;background:rgba(255,255,255,.92);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+.nav .wrap{display:flex;align-items:center;gap:24px;height:60px;overflow-x:auto;white-space:nowrap}
+.brand{font:700 21px var(--head);color:var(--ink);text-decoration:none;margin-right:auto}
+.nav a.l{color:var(--muted);text-decoration:none;font-size:15px;font-weight:500}.nav a.l:hover{color:var(--accent)}
+.hero{background:var(--surface);border-bottom:1px solid var(--line);padding:84px 0 64px}
+.hero h1{font:700 clamp(40px,7vw,76px)/1.02 var(--head);letter-spacing:-.03em;margin:0 0 20px;max-width:15ch}
+.hero p.lead{font-size:20px;color:var(--muted);max-width:62ch;margin:0 0 12px}
+.meta{font-size:15px;color:var(--muted)}
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1px;background:var(--line);border:1px solid var(--line);border-radius:14px;overflow:hidden;margin-top:40px}
+.stats div{background:var(--surface);padding:18px 20px}.stats dt{font-size:14px;color:var(--muted)}.stats dd{margin:2px 0 0;font:600 18px/1.35 var(--head)}
+section{padding:64px 0;border-bottom:1px solid var(--line)}
+h2{font:700 clamp(28px,4vw,40px)/1.1 var(--head);letter-spacing:-.02em;margin:0 0 28px}
+h3{font:600 21px/1.3 var(--head);margin:36px 0 10px}
+p{margin:0 0 14px;max-width:72ch}
+ol.diff{padding:0;margin:0;list-style:none;display:grid;gap:14px;counter-reset:d}
+ol.diff li{counter-increment:d;background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:18px 20px 18px 64px;position:relative;max-width:none}
+ol.diff li::before{content:counter(d);position:absolute;left:18px;top:16px;width:30px;height:30px;border-radius:50%;background:var(--accent-soft);color:var(--accent);font:600 15px/30px var(--head);text-align:center}
+ol.diff b{display:block;font:600 18px var(--head)}
+.tbl{overflow-x:auto;border:1px solid var(--line);border-radius:12px;background:var(--surface)}
+table{border-collapse:collapse;width:100%;min-width:480px}
+th,td{text-align:left;padding:13px 18px;border-bottom:1px solid var(--line);vertical-align:top;font-size:16px}
+tr:last-child td,tr:last-child th{border-bottom:0}th{font-weight:600;width:28%;background:#fafbfd}
+ul.f{margin:0 0 8px;padding-left:20px;max-width:75ch}ul.f li{margin-bottom:8px}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:0 40px}
+code,.kbd{font:14px var(--mono);background:var(--code);padding:2px 6px;border-radius:5px}
+.prompt{background:var(--accent-soft);border-left:4px solid var(--accent);padding:14px 18px;border-radius:0 10px 10px 0;max-width:none}
+.prompt b{color:var(--accent)}
+figure{margin:24px 0 0}figure img{display:block;width:100%;height:auto;border:1px solid var(--line);border-radius:12px;box-shadow:0 10px 30px rgba(20,24,43,.08);background:#000}
+figcaption{font-size:14px;color:var(--muted);margin-top:8px}
+.demo{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:28px;margin-bottom:28px}
+.demo h3{margin-top:0}
+.note{background:#fff8e6;border:1px solid #f0dca4;border-radius:10px;padding:12px 16px;font-size:15px;max-width:none}
+footer{padding:40px 0 60px;color:var(--muted);font-size:15px}
+@media(max-width:600px){.hero{padding:56px 0 44px}section{padding:48px 0}.demo{padding:18px}}
+</style>
+</head>
+<body>
+<header class="nav"><div class="wrap">
+<a class="brand" href="#top">Midum</a>
+<a class="l" href="#summary">Summary</a><a class="l" href="#differentiators">Differentiators</a><a class="l" href="#architecture">Architecture</a><a class="l" href="#capabilities">Capabilities</a><a class="l" href="#security">Security</a><a class="l" href="#demos">In action</a><a class="l" href="#status">Status</a>
+</div></header>
+
+<main id="top">
+<div class="hero"><div class="wrap">
+<h1>Midum — Product &amp; Capability Overview</h1>
+<p class="lead">A desktop AI agent that sees, operates and builds on your computer through natural language and voice.</p>
+<p class="meta">October 2026 · Contact: Parth Satija, <a href="mailto:parthsatija@icloud.com">parthsatija@icloud.com</a></p>
+<dl class="stats" style="margin-bottom:0">
+<div><dt>Native agent tools</dt><dd>158</dd></div>
+<div><dt>Interchangeable LLM backends</dt><dd>9 (including a gateway reaching 100+ providers)</dd></div>
+<div><dt>Workspace tabs in the desktop UI</dt><dd>12</dd></div>
+<div><dt>Platforms</dt><dd>Windows (primary), Linux; macOS partial</dd></div>
+<div><dt>Extension points</dt><dd>MCP servers, user-built Flows, Skills, Knowledge Bases</dd></div>
+<div><dt>Interfaces</dt><dd>Desktop GUI, terminal CLI, voice, Discord</dd></div>
+</dl></div></div>
+
+<section id="summary"><div class="wrap">
+<h2>1. Executive Summary</h2>
+<p>Midum is a desktop AI agent that sees, operates and builds on a user's computer through natural language and voice. Where most AI assistants stop at conversation, Midum acts: it reads and drives native applications and browsers, runs code and shell commands, manages files, coordinates teams of background agents, builds live visual interfaces on demand, and takes part in voice, Discord and automated workflows.</p>
+<p>It is model-agnostic by design. A single agent runtime sits on top of nine interchangeable LLM backends, so the product is not tied to any one model vendor and can follow the market as models change.</p>
+</div></section>
+
+<section id="differentiators"><div class="wrap">
+<h2>2. Core Differentiators</h2>
+<ol class="diff">
+<li><b>Real computer control, not just chat.</b>A unified snapshot/act interface drives native desktop applications and web pages with exact, index-based targeting, backed by vision and OCR fallbacks when accessibility data is missing.</li>
+<li><b>Model independence.</b>Providers can be switched live. Any provider can also be used as a consultant (reasoning only) or a delegate (a full tool-using sub-task) from another, enabling cost and capability routing inside a single session.</li>
+<li><b>Multi-agent orchestration.</b>Named background agents run in parallel on their own threads, optionally on different models, with persistence across restarts and results routed back to the supervising conversation.</li>
+<li><b>Generative interface.</b>The agent writes and displays live, interactive HTML interfaces on request, either in a side panel or as floating desktop widgets, that can call back into any of the agent's tools.</li>
+<li><b>No-code automation.</b>A visual node-graph editor compiles user-designed workflows to real Python, which can be scheduled, called by the agent, or promoted to first-class tools.</li>
+<li><b>Open extensibility through MCP.</b>Any Model Context Protocol server can be connected over stdio, HTTP or SSE, with governance controls on what it may access.</li>
+<li><b>Governance built in.</b>Per-tool permission levels, password-protected approvals and filesystem policy controls give the user fine-grained control over what the agent may do.</li>
+</ol>
+</div></section>
+
+<section id="architecture"><div class="wrap">
+<h2>3. Architecture Overview</h2>
+<div class="tbl"><table>
+<tr><th>Desktop shell</th><td>Windowed application with chat, voice, tool, flow, agent and settings workspaces</td></tr>
+<tr><th>Agent runtime</th><td>Turn loop, continuous action loop, live steering, abort, tool-call recovery, automatic context management</td></tr>
+<tr><th>Provider layer</th><td>Normalizes all LLM backends to one interface; handles fallback chains and key rotation</td></tr>
+<tr><th>Tool layer</th><td>158 native tools plus connected MCP tools and user Flows, filtered through the permission layer</td></tr>
+<tr><th>Automation layer</th><td>Windows UI Automation, Linux AT-SPI, Chrome DevTools Protocol, OCR, input control</td></tr>
+<tr><th>Knowledge layer</th><td>Memory tiers, skills, knowledge bases, indexed PDF sources</td></tr>
+<tr><th>Persistence</th><td>Local file-based storage; user secrets kept outside the project directory</td></tr>
+</table></div>
+</div></section>
+
+<section id="capabilities"><div class="wrap">
+<h2>4. Capability Detail</h2>
+<div class="grid">
+<div>
+<h3>4.1 Model Providers and Routing</h3>
+<p>Nine backends: local and hosted open-model runtimes, Google Gemini (API and web session), Groq, OpenRouter, a self-hosted gateway, LiteLLM, and a ChatGPT web-session backend. The two web-session backends (Gemini and ChatGPT) are unofficial integrations that reuse a signed-in browser session instead of an official API; the seller is willing to remove them at the buyer's discretion.</p>
+<ul class="f">
+<li><b>LiteLLM integration:</b> access to 100+ providers through one interface, with in-app key management, live model discovery, connection testing and one-click installation.</li>
+<li><b>Resilience:</b> configurable fallback chains, automatic API-key rotation on quota errors, and per-provider handling for models without native tool calling.</li>
+<li><b>Consult and delegate:</b> any backend can supply reasoning to, or run a complete tool-using sub-task for, another.</li>
+<li><b>Planning:</b> an optional pre-reasoning step produces an execution plan for the working model.</li>
+<li><b>Context management:</b> automatic background summarization at 80% of the model's window, invisible to the user, with a user-adjustable context limit.</li>
+</ul>
+</div>
+<div>
+<h3>4.2 Computer Control</h3>
+<ul class="f">
+<li><b>Unified snapshot/act:</b> one interface for desktop windows and browser tabs, producing a numbered list of actionable elements that the agent selects by index.</li>
+<li><b>Windows:</b> deep UI Automation support tuned for Electron and Chromium applications, with per-application “blueprints” that cache resolved controls for faster repeat use.</li>
+<li><b>Linux:</b> AT-SPI-based equivalent exposing the same API.</li>
+<li><b>Vision and OCR fallbacks:</b> grid-annotated screenshots, in-memory OCR, and click-by-text or coordinate when accessibility data is unavailable.</li>
+<li><b>Browser automation:</b> Chrome DevTools Protocol for page reading, element interaction and script execution, with ARIA and content-editable support.</li>
+<li><b>Safety checks:</b> typing is verified against the expected focused window before input is sent.</li>
+</ul>
+</div>
+<div>
+<h3>4.3 Files, Terminals and Code</h3>
+<ul class="f">
+<li>Chunked and smart file reading, writing and appending, plus Word document generation.</li>
+<li>Fast file discovery and a remembered-paths registry.</li>
+<li>PowerShell/bash execution, a persistent WSL2 shell, and isolated Python execution.</li>
+<li>A shared persistent shell that both the user and the agent can drive, with live output streaming.</li>
+<li>Workspace and project switching, with one-click open in VS Code or a terminal.</li>
+</ul>
+</div>
+<div>
+<h3>4.4 Memory, Skills and Knowledge</h3>
+<ul class="f">
+<li><b>Three memory tiers:</b> master, project and session.</li>
+<li><b>Skills:</b> reusable instruction packs loadable by name or index.</li>
+<li><b>Domain knowledge bases:</b> user-authored, editable, and attachable to individual agents.</li>
+<li><b>PDF Sources with Explain Mode:</b> users tag a PDF's heading hierarchy (manually or by matching a font signature), after which the agent can teach the document part by part or page by page.</li>
+<li><b>Knowledge-Only mode:</b> restricts an answer to the supplied source by removing web and file-discovery tools for that message.</li>
+</ul>
+</div>
+<div>
+<h3>4.5 Multi-Agent System</h3>
+<ul class="f">
+<li>Create, stop, resume and remove named background agents, each with its own history, system prompt and optional model.</li>
+<li>Non-blocking task assignment; completed reports are pushed back to the supervising conversation automatically.</li>
+<li>Agents can alert the user mid-task.</li>
+<li>Per-agent knowledge and skill attachments, refreshed from disk on every task.</li>
+<li>Optional persistence so agents survive application restarts; each running agent is visible in a live monitoring tab.</li>
+</ul>
+</div>
+<div>
+<h3>4.6 Generative Visual Surfaces</h3>
+<ul class="f">
+<li><b>Render Surface:</b> a side panel in which the agent writes and edits live HTML/CSS/JS applications (tools, visualizations, simulations, games). Surfaces can be saved, reloaded and deleted, and can call any agent tool through a built-in bridge.</li>
+<li><b>Ambient Surfaces:</b> floating, rounded desktop widgets placed by the agent at exact screen positions, animated, saved and restored, up to eight at once. They never take keyboard focus and are excluded from the agent's own screen captures.</li>
+<li><b>Diagrams and media:</b> native Mermaid rendering, flowchart generation and image generation.</li>
+</ul>
+</div>
+<div>
+<h3>4.7 Voice, Messaging and Collaboration</h3>
+<ul class="f">
+<li><b>Real-time voice mode:</b> low-latency speech-to-speech conversation with the same tool access as text chat, with configurable voice, push-to-talk via keyboard or mouse buttons, and optional live screen sharing.</li>
+<li><b>Discord voice:</b> the agent can join a voice channel and hold a real-time, interruptible conversation with multiple speakers, including auto-join and auto-leave.</li>
+<li><b>Discord text:</b> direct messages and server channels, with session management, proactive posting, history reading and file upload.</li>
+</ul>
+</div>
+<div>
+<h3>4.8 Automation: Flows and Scheduling</h3>
+<ul class="f">
+<li>Visual editor with start/end, conditionals, loops, variables, arguments, operations, inline Python, AI-assisted steps (prompt, summarize, choose), native tools, MCP tools and nested flows.</li>
+<li>Compiler that turns the graph into a real Python function, keeping the graph editable.</li>
+<li>Scheduler supporting one-off, interval, daily and weekly runs while the application is open.</li>
+<li>Promotion: any Flow can be promoted into a directly callable agent tool.</li>
+</ul>
+</div>
+<div>
+<h3>4.9 Extensibility: MCP</h3>
+<ul class="f">
+<li>Connect any MCP server over stdio, HTTP or SSE; saved servers reconnect automatically at launch.</li>
+<li>On-demand discovery keeps the model's context small: servers, then tools, then the call.</li>
+<li>Tool promotion: frequently used MCP tools can be promoted so the agent calls them directly, like native tools, with no discovery step.</li>
+<li>Filesystem policy: allowed roots, blocked sub-paths, and a password-protected approval flow.</li>
+</ul>
+</div>
+<div>
+<h3>4.10 User Experience</h3>
+<ul class="f">
+<li><b>Prompt-box pickers:</b> typing <code>#</code> opens a fast, purpose-built file and folder navigator above the prompt box, and <code>/</code> opens a categorized browser of every Tool, MCP tool, Skill, Flow and Knowledge Base, so any asset can be referenced in a few keystrokes.</li>
+<li>Conversation tabs and tab groups with automatic titles, session restore and saved groups.</li>
+<li>Chat history with search, rename and reopen.</li>
+<li>Personalization: 12 built-in themes, custom presets, animated backgrounds, glass effects and custom background images.</li>
+<li>Tool workbench: browse all tools by category and run any of them manually.</li>
+<li>Interjection and abort: steer or stop a running task at any time.</li>
+</ul>
+</div>
+</div>
+</div></section>
+
+<section id="security"><div class="wrap">
+<h2>5. Security and Governance</h2>
+<div class="tbl"><table>
+<tr><th>Per-tool permissions</th><td>Each native or MCP tool can be set to Always, Ask, Ask with password, or Deny; denied tools are removed from the model's view</td></tr>
+<tr><th>Password-gated approval</th><td>Set by the user, stored only as a salted PBKDF2 hash, never visible to the model</td></tr>
+<tr><th>Filesystem policy</th><td>Allowed roots and blocked sub-paths for file-capable MCP servers</td></tr>
+<tr><th>Knowledge-Only mode</th><td>Removes web and file-discovery tools for a single message</td></tr>
+<tr><th>Voice-mode tool restrictions</th><td>High-risk tools are blocked from voice-initiated calls</td></tr>
+<tr><th>Command guards</th><td>Platform-specific rules prevent mismatched shell commands</td></tr>
+<tr><th>Window-guarded input</th><td>Typing is rejected if the focused window is not the intended one</td></tr>
+<tr><th>Local secrets</th><td>API keys are stored outside the project directory and masked in the interface</td></tr>
+</table></div>
+</div></section>
+
+<section id="technology"><div class="wrap">
+<h2>6. Technology and Distribution</h2>
+<ul class="f">
+<li><b>Language and UI:</b> Python, with a web-technology front end hosted in a native desktop window.</li>
+<li><b>Distribution:</b> a launcher application manages repository sync, updates, virtual environment creation, dependency installation and first-run key setup. Packaged executables are produced through a CI release pipeline.</li>
+<li><b>Local-first:</b> user data, chats, memory and configuration are stored locally; network traffic goes only to the model providers and services the user chooses.</li>
+<li><b>Dependencies:</b> built on freely available open-source Python libraries (installed from a requirements file) and the Tesseract OCR engine.</li>
+</ul>
+</div></section>
+
+<section id="platforms"><div class="wrap">
+<h2>7. Platform Support</h2>
+<div class="tbl"><table>
+<tr><th>Windows</th><td>Full feature set</td></tr>
+<tr><th>Linux</th><td>Supported (X11/Wayland, AT-SPI)</td></tr>
+<tr><th>macOS</th><td>Partial</td></tr>
+</table></div>
+</div></section>
+
+<section id="demos"><div class="wrap">
+<h2>8. Product in Action</h2>
+<p>The five examples below come from live sessions of the application. Each is driven by plain-language instructions with no manual steps in between. The main conversations shown ran on a lightweight, low-cost model (Gemini 3.5 Flash-Lite, visible in each window title), and the background agent in Demo 4 ran on a separate model chosen for it, illustrating that results do not depend on a premium model. All five demos ran through the official Gemini API.</p>
+
+<article class="demo">
+<h3>Demo 1 — Bulk file operations on a real research dataset</h3>
+<p class="prompt"><b>Prompt:</b> “Organize the CSVs in D:\iris_calibration\outputs\csv in folders based on seed in the file name such that all bodies of the same seed come in the same folder.” <b>Follow-up:</b> “Which seed folders have the highest amount of data in them.”</p>
+<p>Midum sorts the output files into one folder per seed (for example <code>seed_174</code>, <code>seed_175</code>) using terminal commands, then answers the follow-up by scanning the folders and ranking them by total file size. Every step is logged as an expandable tool-call row, so each command and its result can be inspected.</p>
+<figure><img src="assets/demo1.jpg" alt="Midum chat window showing CSV files organized by seed, with expandable tool-call rows" loading="lazy"><figcaption>Demo 1: terminal-driven file organization with an inspectable tool-call log.</figcaption></figure>
+</article>
+
+<article class="demo">
+<h3>Demo 2 — Ambient Surface: a floating widget over the live desktop</h3>
+<p class="prompt"><b>Prompt (spoken):</b> “Read problem three on my screen using OCR and then put a step-by-step solution in an ambient surface on the top corner of my screen. The top left corner to be specific.”</p>
+<p>Spoken to Midum's voice mode with a competition-math problem open in the browser, Midum reads the problem from the screen using OCR and places a step-by-step solution in a floating, rounded widget in the top-left corner, as requested. The widget has a “Got it” button and a close control, does not take keyboard focus, and is excluded from Midum's own screen captures. In voice mode the live voice model does not write the surface itself; it hands the build to the standard text model (Gemini 3.5 Flash-Lite here), which generates the widget.</p>
+<figure><img src="assets/demo2.jpg" alt="A floating step-by-step solution widget in the top-left corner over a browser showing a math problem" loading="lazy"><figcaption>Demo 2: an Ambient Surface floating over the live desktop.</figcaption></figure>
+</article>
+
+<article class="demo">
+<h3>Demo 3 — Render Surface: a playable game from one instruction</h3>
+<p class="prompt"><b>Prompt:</b> “Make a playable tank game with smart enemy tanks and randomly scattered obstacles in a render surface please.” <b>Follow-up:</b> “Give me more health.”</p>
+<p>In a single tool call Midum builds “Retro Tank Mayhem” and opens it in the side panel, where it is immediately playable. It includes enemy AI with line-of-sight checks, randomly generated obstacles, WASD and mouse controls, progressive waves, and a live score, health and enemy-count display. The game can be refined with plain follow-up requests and saved for later with the panel's save control.</p>
+<figure><img src="assets/demo3.jpg" alt="Midum chat beside a Render Surface panel running the Retro Tank Mayhem game" loading="lazy"><figcaption>Demo 3: “Retro Tank Mayhem” running in the Render Surface side panel.</figcaption></figure>
+</article>
+
+<article class="demo">
+<h3>Demo 4 — Orchestration: a saved Flow, a persistent agent, a Skill and a Knowledge Base</h3>
+<p class="prompt"><b>Prompt (same chat):</b> “Now create a new godot project using the /create_godot_project Flow in the D: drive, then spawn a persistent Godot agent named Mary, attach the /godot KB and /gdscript skill to it, and give it the task to create this game in Godot”</p>
+<p>One instruction triggers three tool calls: the saved <code>create_godot_project</code> Flow runs, a persistent agent named Mary is created with the <code>godot</code> Knowledge Base and the <code>gdscript</code> Skill attached, and a build task is sent to her. The task carries over the game from earlier in the conversation, including the features added through follow-up requests (250 health, waves, shooting, obstacles and a silent pause key). Mary works in the background in her own live tab, and when she finishes, a notice appears in the main conversation and her report is delivered there automatically. The <code>/create_godot_project</code>, <code>/godot</code> and <code>/gdscript</code> references were selected from the prompt-box capability picker, and every tool row expands to show the exact call and return.</p>
+<figure><img src="assets/demo4.jpg" alt="Midum chat showing run_flow, start_agent and send_agent_task calls and a notice that agent Mary finished" loading="lazy"><figcaption>Demo 4: a Flow, a persistent agent, a Skill and a Knowledge Base from one instruction.</figcaption></figure>
+</article>
+
+<article class="demo">
+<h3>Demo 5 — Live steering with interjections in a continuous Action Loop</h3>
+<p class="prompt"><b>Prompt:</b> “Run an action loop and wait for my commands that I will enter through interjections.” <b>Interjections sent while it runs:</b> “Say Hello”, then “Now terminate the action loop.”</p>
+<p>Midum starts a continuous loop and waits. Each message the user types while it is running appears as a full-width steering pill in the conversation and is delivered to the agent after its current tool call, without starting a new conversation turn. The agent acts on each command in turn and exits the loop when told to. The same mechanism can redirect a long-running task mid-flight.</p>
+<figure><img src="assets/demo5.jpg" alt="Midum chat showing steering pills 'Say Hello' and 'Now terminate the action loop' during an action loop" loading="lazy"><figcaption>Demo 5: interjections steering a running Action Loop.</figcaption></figure>
+</article>
+
+<p><b>Capabilities shown across the demos:</b> terminal and bulk file handling, voice mode, OCR-based screen reading, desktop-overlay Ambient Surfaces, generative Render Surfaces, saved Flows, persistent multi-agent orchestration with Skills and Knowledge Bases, the <code>/</code> capability picker, live interjections, and a transparent, inspectable tool-call log.</p>
+</div></section>
+
+<section id="status" style="border-bottom:0"><div class="wrap">
+<h2>9. Status, Ownership and Support</h2>
+<div class="tbl"><table>
+<tr><th>Current release</th><td>v2.0.1 (4 October 2026)</td></tr>
+<tr><th>Development model</th><td>Private repository; single founder</td></tr>
+<tr><th>Usage figures</th><td>None to report. No marketing has been done and the repository is private, so there are no download, user or revenue numbers. The value on offer is the product itself.</td></tr>
+<tr><th>Ownership</th><td>Sole author, no outside contributors. 100% of the intellectual property and ownership is included in the sale.</td></tr>
+<tr><th>Post-sale support</th><td>Hourly-billed founder support, subject to availability</td></tr>
+</table></div>
+<h3>Ownership and IP</h3>
+<p>Midum was created entirely by one author, so there are no contributor agreements or shared-ownership questions to resolve. The sale includes 100% of the intellectual property and ownership in the product. Open-source libraries it depends on remain under their own licenses.</p>
+<h3>Team</h3>
+<p>Midum is built and maintained by a single founder. There is no team to transfer, and the acquirer would take over the codebase directly.</p>
+<h3>Support and transition</h3>
+<p>Founder support is available on an hourly-billed basis, subject to availability, for example for handover, onboarding and technical questions.</p>
+</div></section>
+</main>
+<footer><div class="wrap">Midum — Product &amp; Capability Overview · October 2026 · <a href="mailto:parthsatija@icloud.com">parthsatija@icloud.com</a></div></footer>
+</body>
+</html>
